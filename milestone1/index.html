@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolzapp</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/css/bootstrap.min.css' integrity='sha512-o/MhoRPVLExxZjCFVBsm17Pkztkzmh7Dp8k7/3JrtNCHh0AQ489kwpfA3dPSHzKDe8YCuEhxXq3Y71eb/o6amg==' crossorigin='anonymous'/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' integrity='sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==' crossorigin='anonymous'/>
+    <link rel="stylesheet" href="style.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js' integrity='sha512-pSyYzOKCLD2xoGM1GwkeHbdXgMRVsSqQaaUoHskx/HF09POwvow2VfVEdARIYwdeFLbu+2FCOTRYuiyeGxXkEg==' crossorigin='anonymous'></script>
+</head>
+<body>
+    <div class="top-bg"></div>
+    <div id="app">
+        <main class="container">
+            <div class="section contacts">
+                <header class="border-end">
+                    <div class="contact-head d-flex align-items-center">
+                        <img src="img/avatar_io.jpg" alt="Michele">
+                        <div class="contact-info ps-2">
+                            <h5>Sofia</h5>
+                        </div>
+                    </div>
+                    <div class="icons d-flex">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </header>
+                <div class="notifications d-flex p-2">
+                    <div class="notifications-icon">
+                        <i class="fa-solid fa-bell-slash"></i>
+                    </div>
+                    <div class="pt-1">
+                        <h6>Ricevi notifiche di nuovi messaggi</h6>
+                        <p class="text-decoration-underline">Attiva notifiche desktop</p>
+                    </div>
+                </div>
+                <div class="search-bar-container p-1">
+                    <div class="search-bar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    </div>
+                </div>
+                <div class="contacts-container">
+                    <div class="contact border-top" v-for="(contact, i) in contacts" @click="visible(i)" :class="{active : contacts[i].visible}">
+                        <img :src="'img/avatar' + contacts[i].avatar + '.jpg'" alt="Michele">
+                        <div class="contact-info ps-2">
+                            <h5>{{ contacts[i].name }}</h5>
+                            <p>{{ contacts[i].messages.at(-1).message }}</p>
+                        </div>
+                        <p class="hour align-self-start">12:00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="section messages">
+                <header>
+                    <div class="contact-head d-flex align-items-center">
+                        <img src="img/avatar_1.jpg" alt="Michele">
+                        <div class="contact-info ps-2">
+                            <h5>Michele</h5>
+                            <p>Ultimo accesso oggi alle 12:00</p>
+                        </div>
+                    </div>
+                    <div class="icons d-flex">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </header>
+                <div class="body py-3 px-sm-5">
+                    <div class="message-text-container sent">
+                        <div class="message-text">
+                            <p>Hai portato a spasso il cane?</p>
+                            <p class="hour">15:30</p>
+                        </div>
+                    </div>
+                    <div class="message-text-container sent">
+                        <div class="message-text">
+                            <p>Ricordati di stendere i panni</p>
+                            <p class="hour">15:50</p>
+                        </div>
+                    </div>
+                    <div class="message-text-container received">
+                        <div class="message-text">
+                            <p>Tutto fatto!</p>
+                            <p class="hour">16:15</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-input">
+                    <i class="fa-regular fa-face-smile"></i>
+                    <input type="text" placeholder="Scrivi un messaggio">
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
