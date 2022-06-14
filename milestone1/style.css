@@ -5,6 +5,10 @@
     --bs-notification-bg: #8edafc;
 }
 
+body, main.container, .section.contacts, .section.messages{
+    overflow: hidden;
+}
+
 .top-bg{
     background-color: #009688;
     position: absolute;
@@ -34,7 +38,6 @@ main.container{
 
 .section.messages{
     width: 65%;
-    overflow: hidden;
 }
 
 header{
@@ -163,6 +166,11 @@ i{
 .search-bar input:focus-visible{
     border: none;
     outline: none;
+}
+
+.contacts-container{
+    flex-grow: 1;
+    overflow: auto;
 }
 
 .contact{
