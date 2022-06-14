@@ -50,7 +50,7 @@
                             <h5>{{ contacts[i].name }}</h5>
                             <p>{{ contacts[i].messages.at(-1).message }}</p>
                         </div>
-                        <p class="hour align-self-start">{{ contacts[i].messages.at(-1).date.split(" ")[1] }}</p>
+                        <p class="hour align-self-start">{{ contacts[i].messages.at(-1).date.split(" ")[1].split(":")[0] + ":" + contacts[i].messages.at(-1).date.split(" ")[1].split(":")[1] }}</p>
                     </div>
                 </div>
             </div>
