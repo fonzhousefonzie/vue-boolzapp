@@ -41,12 +41,12 @@
                 <div class="search-bar-container p-1">
                     <div class="search-bar">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                        <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchInput">
                     </div>
                 </div>
                 <div class="contacts-container">
-                    <div class="contact border-top" v-for="(contact, i) in contacts" @click="visible(i)" :class="{active : contact.visible}">
-                        <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="contact.name">
+                    <div class="contact border-top" v-for="(contact, i) in contacts" @click="visible(i)" :class="{active : contact.visible, 'd-none': !contact.name.toLowerCase().includes(searchInput.toLowerCase())}">
+                        <img :src="'img/avatar' + contact.avatar + '.jpg'" :alt="contact.name">
                         <div class="contact-info ps-2">
                             <h5>{{ contact.name }}</h5>
                             <p>{{ contact.messages.at(-1).message }}</p>
@@ -60,7 +60,7 @@
             <div class="section messages" v-for="(contact, i) in contacts" :class="{'d-flex': contact.visible, 'd-none': !contact.visible}">
                 <header>
                     <div class="contact-head d-flex align-items-center">
-                        <img :src="'img/avatar' + contact.avatar + '.jpg'" :alt="contact.name">
+                        <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="Michele">
                         <div class="contact-info ps-2">
                             <h5>{{ contact.name }}</h5>
                             <p>{{ 'Ultimo accesso oggi alle ' + contact.messages.at(-1).date.split(" ")[1].split(":")[0] + ":" + contact.messages.at(-1).date.split(" ")[1].split(":")[1]}}</p>

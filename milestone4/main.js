@@ -195,6 +195,7 @@ const newVue = new Vue({
     contacts : contatti,
     newMessage: "",
     contact : "",
+    searchInput: "",
   },
   methods:{
     visible(i){

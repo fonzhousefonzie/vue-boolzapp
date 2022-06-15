@@ -18,7 +18,7 @@
             <div class="section contacts">
                 <header class="border-end">
                     <div class="contact-head d-flex align-items-center">
-                        <img src="img/avatar_io.jpg" alt="Michele">
+                        <img src="img/avatar_io.jpg" alt="Sofia">
                         <div class="contact-info ps-2">
                             <h5>Sofia</h5>
                         </div>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="contacts-container">
                     <div class="contact border-top" v-for="(contact, i) in contacts" @click="visible(i)" :class="{active : contact.visible}">
-                        <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="Michele">
+                        <img :src="'img/avatar' + contact.avatar + '.jpg'" :alt="contact.name">
                         <div class="contact-info ps-2">
                             <h5>{{ contact.name }}</h5>
                             <p>{{ contact.messages.at(-1).message }}</p>
