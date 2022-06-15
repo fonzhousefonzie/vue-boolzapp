@@ -14,6 +14,7 @@
     <div class="top-bg"></div>
     <div id="app">
         <main class="container">
+            <!-- Contacts Section -->
             <div class="section contacts">
                 <header class="border-end">
                     <div class="contact-head d-flex align-items-center">
@@ -45,7 +46,7 @@
                 </div>
                 <div class="contacts-container">
                     <div class="contact border-top" v-for="(contact, i) in contacts" @click="visible(i)" :class="{active : contact.visible}">
-                        <img :src="'img/avatar' + contacts[i].avatar + '.jpg'" alt="Michele">
+                        <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="Michele">
                         <div class="contact-info ps-2">
                             <h5>{{ contact.name }}</h5>
                             <p>{{ contact.messages.at(-1).message }}</p>
@@ -54,13 +55,15 @@
                     </div>
                 </div>
             </div>
-            <div class="section messages">
+            
+            <!-- Chat Section -->
+            <div class="section messages" v-for="(contact, i) in contacts" :class="{'d-flex': contact.visible, 'd-none': !contact.visible}">
                 <header>
                     <div class="contact-head d-flex align-items-center">
-                        <img src="img/avatar_1.jpg" alt="Michele">
+                        <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="Michele">
                         <div class="contact-info ps-2">
-                            <h5>Michele</h5>
-                            <p>Ultimo accesso oggi alle 12:00</p>
+                            <h5>{{ contact.name }}</h5>
+                            <p>{{ 'Ultimo accesso oggi alle ' + contact.messages.at(-1).date.split(" ")[1].split(":")[0] + ":" + contact.messages.at(-1).date.split(" ")[1].split(":")[1]}}</p>
                         </div>
                     </div>
                     <div class="icons d-flex">
@@ -70,22 +73,10 @@
                     </div>
                 </header>
                 <div class="body py-3 px-sm-5">
-                    <div class="message-text-container sent">
+                    <div class="message-text-container" v-for="(message, j) in contact.messages" :class="{'sent': contact.messages[j].status === 'sent'}">
                         <div class="message-text">
-                            <p>Hai portato a spasso il cane?</p>
-                            <p class="hour">15:30</p>
-                        </div>
-                    </div>
-                    <div class="message-text-container sent">
-                        <div class="message-text">
-                            <p>Ricordati di stendere i panni</p>
-                            <p class="hour">15:50</p>
-                        </div>
-                    </div>
-                    <div class="message-text-container received">
-                        <div class="message-text">
-                            <p>Tutto fatto!</p>
-                            <p class="hour">16:15</p>
+                            <p>{{ contact.messages[j].message }}</p>
+                            <p class="hour">{{ contact.messages[j].date.split(" ")[1].split(":")[0] + ":" + contact.messages[j].date.split(" ")[1].split(":")[1]}}</p>
                         </div>
                     </div>
                 </div>
